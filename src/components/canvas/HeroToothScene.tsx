@@ -242,7 +242,19 @@ export const HeroToothScene: React.FC<HeroToothSceneProps> = ({ className = "" }
       targetRotationX = -y * 0.35;
     };
 
+    const handleTouchMove = (e: TouchEvent) => {
+      if (e.touches && e.touches.length > 0) {
+        const touch = e.touches[0];
+        const rect = container.getBoundingClientRect();
+        const x = ((touch.clientX - rect.left) / rect.width) * 2 - 1;
+        const y = -(((touch.clientY - rect.top) / rect.height) * 2 - 1);
+        targetRotationY = x * 0.45;
+        targetRotationX = -y * 0.35;
+      }
+    };
+
     window.addEventListener('mousemove', handlePointerMove, { passive: true });
+    window.addEventListener('touchmove', handleTouchMove, { passive: true });
 
     // Handle Resize
     const handleResize = () => {
@@ -305,6 +317,7 @@ export const HeroToothScene: React.FC<HeroToothSceneProps> = ({ className = "" }
     return () => {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener('mousemove', handlePointerMove);
+      window.removeEventListener('touchmove', handleTouchMove);
       resizeObserver.disconnect();
       if (renderer.domElement && container.contains(renderer.domElement)) {
         container.removeChild(renderer.domElement);
@@ -328,10 +341,10 @@ export const HeroToothScene: React.FC<HeroToothSceneProps> = ({ className = "" }
   // WebGL Fallback View
   if (!hasWebGL) {
     return (
-      <div className={`relative flex items-center justify-center p-8 ${className}`}>
-        <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-full bg-gradient-to-tr from-electric-teal/20 via-electric-violet/20 to-pearl flex items-center justify-center p-8 shadow-card-elevated border border-white">
-          <div className="w-48 h-48 rounded-full bg-white shadow-2xl flex flex-col items-center justify-center border border-navy/5">
-            <svg viewBox="0 0 64 64" className="w-24 h-24 drop-shadow-md" fill="none">
+      <div className={`relative flex items-center justify-center p-4 sm:p-8 ${className}`}>
+        <div className="relative w-64 h-64 xs:w-72 xs:h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full bg-gradient-to-tr from-electric-teal/20 via-electric-violet/20 to-pearl flex items-center justify-center p-6 sm:p-8 shadow-card-elevated border border-white">
+          <div className="w-40 h-40 xs:w-48 xs:h-48 rounded-full bg-white shadow-2xl flex flex-col items-center justify-center border border-navy/5">
+            <svg viewBox="0 0 64 64" className="w-16 h-16 xs:w-20 xs:h-20 sm:w-24 sm:h-24 drop-shadow-md" fill="none">
               <path d="M32 10C24 10 18 16 18 24C18 31 22 36 24 45C25 49.5 27 54 30 54C32 54 32 46 32 43C32 46 32 54 34 54C37 54 39 49.5 40 45C42 36 46 31 46 24C46 16 40 10 32 10Z" fill="url(#fallbackGrad)" stroke="#17233F" strokeWidth="1.5"/>
               <defs>
                 <linearGradient id="fallbackGrad" x1="0" y1="0" x2="1" y2="1">
@@ -340,7 +353,7 @@ export const HeroToothScene: React.FC<HeroToothSceneProps> = ({ className = "" }
                 </linearGradient>
               </defs>
             </svg>
-            <span className="text-xs font-heading font-semibold text-navy/70 mt-3 tracking-wider uppercase">Precision Dental Care</span>
+            <span className="text-[10px] xs:text-xs font-heading font-semibold text-navy/70 mt-2 sm:mt-3 tracking-wider uppercase text-center">Precision Dental Care</span>
           </div>
         </div>
       </div>
@@ -348,30 +361,36 @@ export const HeroToothScene: React.FC<HeroToothSceneProps> = ({ className = "" }
   }
 
   return (
-    <div className={`relative w-full h-[380px] sm:h-[450px] lg:h-[550px] flex items-center justify-center select-none ${className}`}>
+    <div className={`relative w-full h-[280px] xs:h-[340px] sm:h-[440px] lg:h-[530px] flex items-center justify-center select-none ${className}`}>
       {isLoading && (
         <div className="absolute inset-0 flex items-center justify-center z-10">
-          <div className="w-12 h-12 rounded-full border-4 border-electric-teal/20 border-t-electric-teal animate-spin" />
+          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-4 border-electric-teal/20 border-t-electric-teal animate-spin" />
         </div>
       )}
       
       {/* 3D Canvas Container */}
-      <div ref={containerRef} className="w-full h-full cursor-grab active:cursor-grabbing" aria-label="Interactive 3D dental tooth sculpture" role="img" />
+      <div 
+        ref={containerRef} 
+        className="w-full h-full cursor-grab active:cursor-grabbing" 
+        style={{ touchAction: 'pan-y' }}
+        aria-label="Interactive 3D dental tooth sculpture" 
+        role="img" 
+      />
 
       {/* Floating dimensional badges complementing the 3D visual */}
-      <div className="absolute -bottom-2 -left-2 sm:bottom-4 sm:left-4 bg-white/90 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-white shadow-card-elevated flex items-center space-x-3 pointer-events-none animate-float-slow">
-        <div className="w-3.5 h-3.5 rounded-full bg-electric-teal animate-ping" />
+      <div className="absolute bottom-2 left-2 sm:bottom-4 sm:left-4 bg-white/95 backdrop-blur-md px-3 py-2 sm:px-4 sm:py-2.5 rounded-2xl border border-white shadow-card-elevated flex items-center space-x-2.5 sm:space-x-3 pointer-events-none animate-float-slow max-w-[200px] xs:max-w-none">
+        <div className="w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full bg-electric-teal shrink-0 animate-ping" />
         <div>
-          <p className="text-xs font-heading font-bold text-navy">Painless Digital Tech</p>
-          <p className="text-[11px] text-navy/60 font-medium">Precision Guided Care</p>
+          <p className="text-[11px] sm:text-xs font-heading font-bold text-navy leading-tight">Painless Digital Tech</p>
+          <p className="text-[10px] sm:text-[11px] text-navy/60 font-medium leading-tight">Precision Guided Care</p>
         </div>
       </div>
 
-      <div className="absolute top-2 right-2 sm:top-6 sm:right-6 bg-white/90 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-white shadow-card-elevated flex items-center space-x-3 pointer-events-none animate-float-reverse">
-        <div className="w-3.5 h-3.5 rounded-full bg-electric-violet" />
+      <div className="absolute top-2 right-2 sm:top-6 sm:right-6 bg-white/95 backdrop-blur-md px-3 py-2 sm:px-4 sm:py-2.5 rounded-2xl border border-white shadow-card-elevated flex items-center space-x-2.5 sm:space-x-3 pointer-events-none animate-float-reverse max-w-[200px] xs:max-w-none">
+        <div className="w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full bg-electric-violet shrink-0" />
         <div>
-          <p className="text-xs font-heading font-bold text-navy">Aesthetic Harmony</p>
-          <p className="text-[11px] text-navy/60 font-medium">Natural Enamel Realism</p>
+          <p className="text-[11px] sm:text-xs font-heading font-bold text-navy leading-tight">Aesthetic Harmony</p>
+          <p className="text-[10px] sm:text-[11px] text-navy/60 font-medium leading-tight">Natural Enamel Realism</p>
         </div>
       </div>
     </div>

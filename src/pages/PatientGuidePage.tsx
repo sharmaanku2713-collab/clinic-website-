@@ -125,18 +125,18 @@ export const PatientGuidePage: React.FC = () => {
               <div key={idx} className="bg-white rounded-2xl border border-navy/10 overflow-hidden shadow-sm">
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : idx)}
-                  className="w-full px-6 py-4 text-left flex items-center justify-between gap-4 font-heading font-bold text-navy text-sm sm:text-base hover:text-electric-teal transition-colors"
+                  className="w-full p-4 sm:px-6 sm:py-4 text-left flex items-center justify-between gap-3 font-heading font-bold text-navy text-sm sm:text-base hover:text-electric-teal transition-colors"
                 >
-                  <div className="space-y-0.5">
+                  <div className="space-y-0.5 min-w-0">
                     <span className="text-[10px] font-bold uppercase tracking-wider text-electric-violet block">
                       {faq.category}
                     </span>
-                    <span>{faq.q}</span>
+                    <span className="break-words">{faq.q}</span>
                   </div>
                   <ChevronDown className={`w-5 h-5 text-navy/40 shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-electric-teal' : ''}`} />
                 </button>
                 {isOpen && (
-                  <div className="px-6 pb-5 pt-2 text-xs sm:text-sm text-navy/70 border-t border-navy/5 leading-relaxed">
+                  <div className="px-4 pb-4 pt-2 sm:px-6 sm:pb-5 text-xs sm:text-sm text-navy/70 border-t border-navy/5 leading-relaxed">
                     {faq.a}
                   </div>
                 )}

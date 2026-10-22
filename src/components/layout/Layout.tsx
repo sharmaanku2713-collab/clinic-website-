@@ -17,7 +17,7 @@ export const Layout: React.FC = () => {
   }, [pathname]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-pearl text-navy selection:bg-electric-teal selection:text-white">
+    <div className="min-h-screen flex flex-col bg-pearl text-navy selection:bg-electric-teal selection:text-white overflow-x-clip">
       {/* Primary Navigation */}
       <Navbar />
 

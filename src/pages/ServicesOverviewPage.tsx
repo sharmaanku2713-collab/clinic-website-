@@ -108,10 +108,10 @@ export const ServicesOverviewPage: React.FC = () => {
               </div>
 
               {/* Bottom Actions */}
-              <div className="pt-4 border-t border-navy/5 flex items-center justify-between gap-3">
+              <div className="pt-4 border-t border-navy/5 flex flex-wrap sm:flex-nowrap items-center justify-between gap-2.5">
                 <Link
                   to={`/services/${service.slug}`}
-                  className="btn-3d-outline px-4 py-2 text-xs rounded-xl"
+                  className="btn-3d-outline px-4 py-2 text-xs rounded-xl flex-1 text-center"
                 >
                   Full Procedure Details
                 </Link>

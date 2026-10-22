@@ -40,7 +40,7 @@ export const PricingPage: React.FC = () => {
               <div
                 key={index}
                 className={`card-3d relative flex flex-col justify-between ${
-                  isRec ? 'border-2 border-electric-violet shadow-card-hover -translate-y-2' : ''
+                  isRec ? 'border-2 border-electric-violet shadow-card-hover md:-translate-y-2' : ''
                 }`}
               >
                 {isRec && (
@@ -126,8 +126,12 @@ export const PricingPage: React.FC = () => {
         </div>
 
         <div className="bg-white rounded-3xl border border-navy/10 overflow-hidden shadow-card-elevated">
+          <div className="px-4 py-2.5 bg-pearl text-navy/70 text-xs flex items-center justify-between sm:hidden border-b border-navy/10 font-medium">
+            <span>← Swipe sideways to compare services</span>
+            <span className="font-bold text-electric-teal text-[11px] uppercase tracking-wider">5 Columns</span>
+          </div>
           <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse text-xs sm:text-sm">
+            <table className="w-full min-w-[620px] text-left border-collapse text-xs sm:text-sm">
               <thead>
                 <tr className="bg-pearl-200/80 border-b border-navy/10 text-navy font-heading font-bold">
                   <th className="p-4 sm:p-5">Clinical Service</th>

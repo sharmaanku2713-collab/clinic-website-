@@ -80,7 +80,7 @@ export const ContactPage: React.FC = () => {
               <h2 className="text-lg font-heading font-bold text-navy mt-1">Email Desk</h2>
               <p className="text-xs text-navy/60 mt-1">For digital records, formal queries, and referrals.</p>
             </div>
-            <p className="font-heading font-bold text-navy text-xs truncate">{clinicConfig.contact.email}</p>
+            <p className="font-heading font-bold text-navy text-xs break-all">{clinicConfig.contact.email}</p>
             <a
               href={`mailto:${clinicConfig.contact.email}`}
               className="btn-3d-outline px-4 py-2 text-xs rounded-xl block text-center"
@@ -148,13 +148,13 @@ export const ContactPage: React.FC = () => {
                 href={mapLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-3d-outline px-6 py-3.5 text-xs sm:text-sm rounded-2xl inline-flex items-center justify-center gap-2"
+                className="btn-3d-outline px-6 py-3.5 text-xs sm:text-sm rounded-2xl inline-flex items-center justify-center gap-2 w-full sm:w-auto text-center"
               >
-                <Navigation className="w-4 h-4 text-electric-teal" />
+                <Navigation className="w-4 h-4 text-electric-teal shrink-0" />
                 <span>Open in Google Maps</span>
               </a>
 
-              <WhatsAppButton variant="teal" size="sm" label="Enquire on WhatsApp" />
+              <WhatsAppButton variant="teal" size="sm" label="Enquire on WhatsApp" className="w-full sm:w-auto text-center" />
             </div>
           </div>
 

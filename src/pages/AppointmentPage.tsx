@@ -65,7 +65,7 @@ export const AppointmentPage: React.FC = () => {
                   placeholder="e.g. John Doe"
                   value={patientName}
                   onChange={(e) => setPatientName(e.target.value)}
-                  className="w-full px-4 py-3 rounded-2xl bg-pearl border border-navy/10 text-navy text-sm focus:outline-none focus:ring-2 focus:ring-electric-teal"
+                  className="w-full px-4 py-3 min-h-[48px] rounded-2xl bg-pearl border border-navy/10 text-navy text-sm xs:text-base focus:outline-none focus:ring-2 focus:ring-electric-teal"
                 />
               </div>
 
@@ -77,7 +77,7 @@ export const AppointmentPage: React.FC = () => {
                 <select
                   value={selectedService}
                   onChange={(e) => setSelectedService(e.target.value)}
-                  className="w-full px-4 py-3 rounded-2xl bg-pearl border border-navy/10 text-navy text-sm focus:outline-none focus:ring-2 focus:ring-electric-teal"
+                  className="w-full px-4 py-3 min-h-[48px] rounded-2xl bg-pearl border border-navy/10 text-navy text-sm xs:text-base focus:outline-none focus:ring-2 focus:ring-electric-teal"
                 >
                   <option value="General Dentistry & Consultation">General Dentistry Consultation</option>
                   <option value="Professional Teeth Whitening">Teeth Whitening</option>
@@ -99,7 +99,7 @@ export const AppointmentPage: React.FC = () => {
                     type="date"
                     value={preferredDate}
                     onChange={(e) => setPreferredDate(e.target.value)}
-                    className="w-full px-4 py-3 rounded-2xl bg-pearl border border-navy/10 text-navy text-sm focus:outline-none focus:ring-2 focus:ring-electric-teal"
+                    className="w-full px-4 py-3 min-h-[48px] rounded-2xl bg-pearl border border-navy/10 text-navy text-sm xs:text-base focus:outline-none focus:ring-2 focus:ring-electric-teal"
                   />
                 </div>
 
@@ -110,7 +110,7 @@ export const AppointmentPage: React.FC = () => {
                   <select
                     value={preferredTime}
                     onChange={(e) => setPreferredTime(e.target.value)}
-                    className="w-full px-4 py-3 rounded-2xl bg-pearl border border-navy/10 text-navy text-sm focus:outline-none focus:ring-2 focus:ring-electric-teal"
+                    className="w-full px-4 py-3 min-h-[48px] rounded-2xl bg-pearl border border-navy/10 text-navy text-sm xs:text-base focus:outline-none focus:ring-2 focus:ring-electric-teal"
                   >
                     <option value="Morning (10:00 AM - 01:00 PM)">Morning (10:00 AM – 01:00 PM)</option>
                     <option value="Afternoon (02:00 PM - 05:00 PM)">Afternoon (02:00 PM – 05:00 PM)</option>
@@ -124,7 +124,7 @@ export const AppointmentPage: React.FC = () => {
                 <span className="text-[10px] uppercase font-bold text-navy/40 font-heading block">
                   Generated WhatsApp Message Preview:
                 </span>
-                <p className="whitespace-pre-line bg-white p-3 rounded-xl border border-navy/5 shadow-sm">
+                <p className="whitespace-pre-line bg-white p-3 rounded-xl border border-navy/5 shadow-sm break-words">
                   {generateEnquiryText()}
                 </p>
               </div>
@@ -135,9 +135,9 @@ export const AppointmentPage: React.FC = () => {
                   href={dynamicWhatsAppLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-3d-teal w-full text-center py-4 text-base font-bold flex items-center justify-center gap-2"
+                  className="btn-3d-teal w-full text-center py-4 px-3 sm:px-6 text-sm xs:text-base font-bold flex items-center justify-center gap-2"
                 >
-                  <MessageCircle className="w-5 h-5" />
+                  <MessageCircle className="w-5 h-5 shrink-0" />
                   <span>Send Appointment Enquiry on WhatsApp</span>
                 </a>
               </div>

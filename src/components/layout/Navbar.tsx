@@ -32,11 +32,33 @@ export const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close menus on route change
+  // Close menus on route change and handle body scroll lock & keyboard escape
   useEffect(() => {
     setMobileMenuOpen(false);
     setServicesDropdownOpen(false);
   }, [location.pathname]);
+
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [mobileMenuOpen]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setMobileMenuOpen(false);
+        setServicesDropdownOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   const serviceIcons = {
     ShieldCheck,
@@ -61,9 +83,9 @@ export const Navbar: React.FC = () => {
   return (
     <header className="sticky top-0 z-40 w-full transition-all duration-300">
       {/* Top Clinic Announcement Strip */}
-      <div className="bg-navy text-pearl px-4 py-2 text-xs md:text-sm font-medium border-b border-white/10">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
-          <div className="flex items-center gap-3">
+      <div className="bg-navy text-pearl px-3 sm:px-4 py-2 text-[11px] sm:text-xs md:text-sm font-medium border-b border-white/10">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1.5 sm:gap-2 text-center sm:text-left">
+          <div className="flex items-center gap-2 sm:gap-3 flex-wrap justify-center sm:justify-start">
             <span className="inline-flex items-center gap-1.5 text-electric-teal font-semibold">
               <span className="w-2 h-2 rounded-full bg-electric-teal animate-pulse" />
               Direct Clinic Scheduling
@@ -75,7 +97,7 @@ export const Navbar: React.FC = () => {
             </span>
           </div>
 
-          <div className="flex items-center gap-4 text-pearl/80 text-xs">
+          <div className="flex items-center gap-3 xs:gap-4 text-pearl/80 text-[11px] sm:text-xs flex-wrap justify-center sm:justify-end">
             <span className="flex items-center gap-1">
               <Phone className="w-3.5 h-3.5 text-electric-teal" />
               <span>Tel: {clinicConfig.contact.phone}</span>
@@ -220,21 +242,31 @@ export const Navbar: React.FC = () => {
           </div>
 
           {/* Mobile Menu Trigger */}
-          <div className="flex items-center gap-2 lg:hidden">
-            <WhatsAppButton variant="teal" size="sm" label="Book" showIcon={false} className="py-2 px-3 text-xs" />
+          <div className="flex items-center gap-1.5 xs:gap-2 lg:hidden">
+            <WhatsAppButton variant="teal" size="sm" label="Book" showIcon={false} className="py-2 px-2.5 xs:px-3 text-xs" />
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2.5 rounded-2xl bg-white border border-navy/10 text-navy hover:text-electric-teal hover:bg-slate-50 transition-colors focus:outline-none focus:ring-2 focus:ring-electric-teal"
-              aria-label="Toggle Navigation Menu"
+              className="w-10 h-10 flex items-center justify-center rounded-2xl bg-white border border-navy/10 text-navy hover:text-electric-teal hover:bg-slate-50 transition-colors focus:outline-none focus:ring-2 focus:ring-electric-teal active:scale-95"
+              aria-label={mobileMenuOpen ? "Close Navigation Menu" : "Open Navigation Menu"}
+              aria-expanded={mobileMenuOpen}
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}
             </button>
           </div>
         </div>
 
+        {/* Mobile Backdrop Overlay */}
+        {mobileMenuOpen && (
+          <div 
+            className="fixed inset-0 bg-navy/40 backdrop-blur-sm z-30 lg:hidden"
+            onClick={() => setMobileMenuOpen(false)}
+            aria-hidden="true"
+          />
+        )}
+
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div className="lg:hidden border-t border-navy/10 bg-white/95 backdrop-blur-xl px-4 pt-4 pb-6 mt-2 max-h-[85vh] overflow-y-auto shadow-2xl animate-in slide-in-from-top-4">
+          <div className="relative z-40 lg:hidden border-t border-navy/10 bg-white/95 backdrop-blur-xl px-4 pt-4 pb-6 mt-2 max-h-[85vh] overflow-y-auto shadow-2xl animate-in slide-in-from-top-4">
             <div className="space-y-1">
               {navLinks.map((link) => (
                 <Link

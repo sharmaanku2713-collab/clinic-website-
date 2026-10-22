@@ -22,7 +22,7 @@ export const DoctorPage: React.FC = () => {
                 <img
                   src={clinicConfig.doctor.portraitUrl}
                   alt={`${clinicConfig.doctor.name} - Professional Portrait`}
-                  className="w-full h-[460px] object-cover rounded-[24px] shadow-sm"
+                  className="w-full h-[320px] xs:h-[380px] sm:h-[460px] object-cover rounded-[24px] shadow-sm"
                 />
                 
                 {/* Floating credentials tag */}
@@ -80,6 +80,7 @@ export const DoctorPage: React.FC = () => {
                 variant="teal" 
                 size="lg" 
                 label={`Schedule Consultation with ${clinicConfig.doctor.name}`} 
+                className="w-full sm:w-auto text-center"
               />
             </div>
           </div>

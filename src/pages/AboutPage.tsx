@@ -63,7 +63,7 @@ export const AboutPage: React.FC = () => {
               <img
                 src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=80"
                 alt="Clinic operatory lounge"
-                className="w-full h-[450px] object-cover"
+                className="w-full h-[280px] xs:h-[350px] sm:h-[450px] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-transparent to-transparent flex items-end p-6 text-white">
                 <div>
@@ -128,7 +128,7 @@ export const AboutPage: React.FC = () => {
             </p>
           </div>
 
-          <WhatsAppButton variant="teal" size="lg" label="Book Consultation on WhatsApp" />
+          <WhatsAppButton variant="teal" size="lg" label="Book Consultation on WhatsApp" className="w-full md:w-auto text-center" />
         </div>
       </div>
     </div>

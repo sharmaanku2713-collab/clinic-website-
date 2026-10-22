@@ -38,7 +38,7 @@ export const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
     violet: 'btn-3d-violet',
     coral: 'btn-3d-coral',
     outline: 'btn-3d-outline',
-    floating: 'bg-emerald-500 hover:bg-emerald-600 text-white rounded-full p-4 shadow-[0_8px_25px_rgba(16,185,129,0.4)] hover:scale-110 active:scale-95 transition-all duration-200 border-2 border-white',
+    floating: 'bg-emerald-500 hover:bg-emerald-600 text-white rounded-full p-3 sm:p-4 shadow-[0_8px_25px_rgba(16,185,129,0.4)] hover:scale-105 active:scale-95 transition-all duration-200 border-2 border-white min-w-[48px] min-h-[48px]',
   }[variant];
 
   if (variant === 'floating') {
@@ -48,10 +48,10 @@ export const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Book appointment directly on WhatsApp"
-        className={`fixed bottom-6 right-6 z-50 flex items-center justify-center ${variantClasses} ${className}`}
-        title="Chat on WhatsApp"
+        className={`fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center justify-center ${variantClasses} ${className}`}
+        title="Chat on WhatsApp (+91 9352089550)"
       >
-        <MessageCircle className="w-7 h-7 text-white fill-current" />
+        <MessageCircle className="w-6 h-6 sm:w-7 sm:h-7 text-white fill-current" />
         <span className="sr-only">Chat on WhatsApp to book an appointment</span>
       </a>
     );
@@ -63,10 +63,10 @@ export const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`WhatsApp: ${displayLabel}`}
-      className={`${variantClasses} ${sizeClasses} gap-2.5 ${className}`}
+      className={`${variantClasses} ${sizeClasses} gap-2 sm:gap-2.5 text-center ${className}`}
     >
-      {showIcon && <MessageCircle className="w-5 h-5 flex-shrink-0" />}
-      <span>{displayLabel}</span>
+      {showIcon && <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />}
+      <span className="break-words leading-tight">{displayLabel}</span>
     </a>
   );
 };

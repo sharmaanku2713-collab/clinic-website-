@@ -31,7 +31,7 @@ export const Footer: React.FC = () => {
             </div>
 
             <div className="pt-2">
-              <WhatsAppButton variant="teal" size="md" label="Book via WhatsApp" />
+              <WhatsAppButton variant="teal" size="md" label="Book via WhatsApp" className="w-full sm:w-auto text-center" />
             </div>
           </div>
 
@@ -98,7 +98,7 @@ export const Footer: React.FC = () => {
             <ul className="space-y-3 text-sm text-pearl/70">
               <li className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-electric-teal shrink-0 mt-0.5" />
-                <span>{clinicConfig.contact.address}</span>
+                <span className="break-words">{clinicConfig.contact.address}</span>
               </li>
               <li className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-electric-teal shrink-0" />
@@ -108,7 +108,7 @@ export const Footer: React.FC = () => {
               </li>
               <li className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-electric-teal shrink-0" />
-                <a href={`mailto:${clinicConfig.contact.email}`} className="hover:text-white transition-colors">
+                <a href={`mailto:${clinicConfig.contact.email}`} className="hover:text-white transition-colors break-all">
                   {clinicConfig.contact.email}
                 </a>
               </li>

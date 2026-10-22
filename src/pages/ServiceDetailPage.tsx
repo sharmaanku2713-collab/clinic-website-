@@ -54,7 +54,7 @@ export const ServiceDetailPage: React.FC = () => {
               </span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy tracking-tight leading-tight">
+            <h1 className="text-3xl xs:text-4xl lg:text-5xl font-extrabold text-navy tracking-tight leading-tight break-words">
               {service.name}
             </h1>
 
@@ -74,6 +74,7 @@ export const ServiceDetailPage: React.FC = () => {
                 variant={service.accentColor}
                 size="lg"
                 label={`Enquire about ${service.name}`}
+                className="w-full sm:w-auto text-center"
               />
             </div>
           </div>
@@ -84,7 +85,7 @@ export const ServiceDetailPage: React.FC = () => {
               <img
                 src={service.heroImage}
                 alt={service.name}
-                className="w-full h-72 object-cover"
+                className="w-full h-60 xs:h-72 object-cover"
               />
               <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md rounded-2xl p-2 shadow-md">
                 <Mini3DViewer type={viewerType} accentColor={accentHex} className="!w-24 !h-24" />
@@ -190,13 +191,13 @@ export const ServiceDetailPage: React.FC = () => {
                 <div key={idx} className="bg-white rounded-2xl border border-navy/10 overflow-hidden shadow-sm">
                   <button
                     onClick={() => setOpenFaq(isOpen ? null : idx)}
-                    className="w-full px-6 py-4 text-left flex items-center justify-between gap-4 font-heading font-bold text-navy text-sm sm:text-base hover:text-electric-teal transition-colors"
+                    className="w-full p-4 sm:px-6 sm:py-4 text-left flex items-center justify-between gap-3 font-heading font-bold text-navy text-sm sm:text-base hover:text-electric-teal transition-colors"
                   >
-                    <span>{faq.q}</span>
+                    <span className="break-words">{faq.q}</span>
                     <ChevronDown className={`w-5 h-5 text-navy/40 shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-electric-teal' : ''}`} />
                   </button>
                   {isOpen && (
-                    <div className="px-6 pb-5 pt-1 text-xs sm:text-sm text-navy/70 border-t border-navy/5 leading-relaxed">
+                    <div className="px-4 pb-4 pt-1 sm:px-6 sm:pb-5 text-xs sm:text-sm text-navy/70 border-t border-navy/5 leading-relaxed">
                       {faq.a}
                     </div>
                   )}
@@ -223,6 +224,7 @@ export const ServiceDetailPage: React.FC = () => {
               variant="teal"
               size="lg"
               label={`Book ${service.name} Appointment`}
+              className="w-full sm:w-auto text-center"
             />
           </div>
         </div>

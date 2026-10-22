@@ -52,22 +52,22 @@ export const HomePage: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left Hero Content */}
             <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-navy/10 shadow-sm">
-                <span className="w-2.5 h-2.5 rounded-full bg-electric-teal animate-ping" />
-                <span className="text-xs font-heading font-semibold text-navy/80 uppercase tracking-wider">
+              <div className="inline-flex items-center gap-2 px-3 xs:px-4 py-2 rounded-full bg-white border border-navy/10 shadow-sm max-w-full flex-wrap justify-center sm:justify-start">
+                <span className="w-2.5 h-2.5 rounded-full bg-electric-teal animate-ping shrink-0" />
+                <span className="text-[11px] xs:text-xs font-heading font-semibold text-navy/80 uppercase tracking-wider">
                   Next-Gen Dental Care
                 </span>
-                <span className="text-navy/30">•</span>
-                <span className="text-xs font-bold text-electric-violet">Evidence-Based Dentistry</span>
+                <span className="text-navy/30 hidden xs:inline">•</span>
+                <span className="text-[11px] xs:text-xs font-bold text-electric-violet">Evidence-Based Dentistry</span>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-navy leading-[1.12]">
+              <h1 className="text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-navy leading-[1.14] break-words">
                 Sculpting Confident, <br />
                 <span className="text-gradient-teal">Healthy Smiles</span> with <br className="hidden sm:inline" />
                 <span className="text-gradient-violet">Digital Precision</span>
               </h1>
 
-              <p className="text-base sm:text-lg text-navy/70 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+              <p className="text-sm xs:text-base sm:text-lg text-navy/70 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
                 Experience high-precision dental treatments in a calming, pearl-white sanctuary. From gentle preventive cleanings to permanent dental implants and clear aligners, every treatment is tailored to your smile.
               </p>
 
@@ -77,7 +77,7 @@ export const HomePage: React.FC = () => {
                   variant="teal" 
                   size="lg" 
                   label="Book Appointment on WhatsApp" 
-                  className="w-full sm:w-auto"
+                  className="w-full sm:w-auto text-center"
                 />
 
                 <Link
@@ -89,26 +89,26 @@ export const HomePage: React.FC = () => {
               </div>
 
               {/* Verified Clinical Highlights */}
-              <div className="pt-6 grid grid-cols-2 sm:grid-cols-3 gap-3 border-t border-navy/10">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-xl bg-electric-teal/10 flex items-center justify-center text-electric-teal">
+              <div className="pt-6 grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 gap-3 border-t border-navy/10">
+                <div className="flex items-center gap-2 min-w-0">
+                  <div className="w-8 h-8 rounded-xl bg-electric-teal/10 flex items-center justify-center text-electric-teal shrink-0">
                     <Cpu className="w-4 h-4" />
                   </div>
-                  <span className="text-xs font-semibold text-navy">Digital Scans</span>
+                  <span className="text-xs font-semibold text-navy truncate">Digital Scans</span>
                 </div>
 
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-xl bg-electric-violet/10 flex items-center justify-center text-electric-violet">
+                <div className="flex items-center gap-2 min-w-0">
+                  <div className="w-8 h-8 rounded-xl bg-electric-violet/10 flex items-center justify-center text-electric-violet shrink-0">
                     <ShieldCheck className="w-4 h-4" />
                   </div>
-                  <span className="text-xs font-semibold text-navy">Class-B Sterilization</span>
+                  <span className="text-xs font-semibold text-navy truncate">Class-B Sterilization</span>
                 </div>
 
-                <div className="flex items-center gap-2 col-span-2 sm:col-span-1">
-                  <div className="w-8 h-8 rounded-xl bg-electric-coral/10 flex items-center justify-center text-electric-coral">
+                <div className="flex items-center gap-2 col-span-1 xs:col-span-2 sm:col-span-1 min-w-0">
+                  <div className="w-8 h-8 rounded-xl bg-electric-coral/10 flex items-center justify-center text-electric-coral shrink-0">
                     <HeartHandshake className="w-4 h-4" />
                   </div>
-                  <span className="text-xs font-semibold text-navy">Gentle Protocols</span>
+                  <span className="text-xs font-semibold text-navy truncate">Gentle Protocols</span>
                 </div>
               </div>
             </div>
@@ -136,7 +136,7 @@ export const HomePage: React.FC = () => {
                   <img
                     src={clinicConfig.doctor.portraitUrl}
                     alt={`${clinicConfig.doctor.name} - Chief Dental Clinician`}
-                    className="w-full h-[400px] object-cover rounded-[22px] shadow-sm"
+                    className="w-full h-[320px] xs:h-[360px] sm:h-[400px] object-cover rounded-[22px] shadow-sm"
                     loading="lazy"
                   />
                   <div className="p-4 bg-white rounded-2xl mt-3 border border-navy/5 shadow-sm">
@@ -171,7 +171,7 @@ export const HomePage: React.FC = () => {
                 </h2>
               </div>
 
-              <div className="p-4 rounded-2xl bg-electric-teal/10 border border-electric-teal/20 text-navy text-sm font-semibold inline-block">
+              <div className="p-4 rounded-2xl bg-electric-teal/10 border border-electric-teal/20 text-navy text-xs xs:text-sm font-semibold inline-block max-w-full break-words">
                 Specialization: {clinicConfig.doctor.specialization} • Experience: {clinicConfig.doctor.experience}
               </div>
 
@@ -446,13 +446,13 @@ export const HomePage: React.FC = () => {
                 >
                   <button
                     onClick={() => setOpenFaqIndex(isOpen ? null : index)}
-                    className="w-full px-6 py-4 text-left flex items-center justify-between gap-4 font-heading font-bold text-navy text-sm sm:text-base hover:text-electric-teal transition-colors"
+                    className="w-full p-4 sm:px-6 sm:py-4 text-left flex items-center justify-between gap-3 font-heading font-bold text-navy text-sm sm:text-base hover:text-electric-teal transition-colors"
                   >
-                    <span>{faq.q}</span>
+                    <span className="break-words">{faq.q}</span>
                     <ChevronDown className={`w-5 h-5 text-navy/40 shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-electric-teal' : ''}`} />
                   </button>
                   {isOpen && (
-                    <div className="px-6 pb-5 pt-1 text-xs sm:text-sm text-navy/70 border-t border-navy/5 leading-relaxed">
+                    <div className="px-4 pb-4 pt-1 sm:px-6 sm:pb-5 text-xs sm:text-sm text-navy/70 border-t border-navy/5 leading-relaxed">
                       {faq.a}
                     </div>
                   )}
@@ -473,7 +473,7 @@ export const HomePage: React.FC = () => {
       {/* 8. APPOINTMENT CTA & LOCATION BANNER */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="rounded-[36px] bg-gradient-to-br from-navy via-navy to-[#1f2e52] text-white p-8 sm:p-12 lg:p-16 relative overflow-hidden shadow-2xl">
+          <div className="rounded-3xl sm:rounded-[36px] bg-gradient-to-br from-navy via-navy to-[#1f2e52] text-white p-6 xs:p-8 sm:p-12 lg:p-16 relative overflow-hidden shadow-2xl">
             {/* Background glowing orbs */}
             <div className="absolute top-0 right-0 w-80 h-80 bg-electric-teal/20 rounded-full blur-3xl pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-80 h-80 bg-electric-violet/20 rounded-full blur-3xl pointer-events-none" />
@@ -483,18 +483,23 @@ export const HomePage: React.FC = () => {
                 <span className="text-xs font-bold uppercase tracking-widest text-electric-teal">
                   Ready to Transform Your Smile?
                 </span>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
+                <h2 className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
                   Schedule Your Consultation with {clinicConfig.doctor.name}
                 </h2>
                 <p className="text-pearl/80 text-sm sm:text-base max-w-xl leading-relaxed">
                   Connect directly with our clinic on WhatsApp. Our friendly team will assist with convenient appointments, preliminary questions, and visiting instructions.
                 </p>
 
-                <div className="pt-4 flex flex-wrap items-center gap-4">
-                  <WhatsAppButton variant="teal" size="lg" label="Book on WhatsApp (+91 9352089550)" />
+                <div className="pt-4 flex flex-col sm:flex-row items-center gap-4">
+                  <WhatsAppButton 
+                    variant="teal" 
+                    size="lg" 
+                    label="Book on WhatsApp (+91 9352089550)" 
+                    className="w-full sm:w-auto text-center"
+                  />
                   <Link
                     to="/contact"
-                    className="px-6 py-4 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-heading font-semibold text-sm transition-all border border-white/20"
+                    className="w-full sm:w-auto text-center px-6 py-4 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-heading font-semibold text-sm transition-all border border-white/20"
                   >
                     View Clinic Address & Map
                   </Link>
